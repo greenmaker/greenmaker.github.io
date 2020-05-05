@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Note | 分享吧</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MY NOTE###（一）Linux中的分区与目录我们了解的Windows系统有分区的概念，例如系统安装在C盘，资料存在D盘。但Linux中没有盘符的概念，它只有一个根目录，也就是&#x2F;，所有的文件和设备都是挂载在它下面的目录——没错，例如光驱这样的设备也是以目录的形式访问的。  以下是常用目录速查- &#x2F;: 根目录，一般只存放目录，一个系统有且仅有一个根目录。 - &#x2F;bin、&#x2F;sbin： 可执行二进制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Note">
+<meta property="og:url" content="https://greenmaker.github.io/2020/05/05/Note/index.html">
+<meta property="og:site_name" content="分享吧">
+<meta property="og:description" content="MY NOTE###（一）Linux中的分区与目录我们了解的Windows系统有分区的概念，例如系统安装在C盘，资料存在D盘。但Linux中没有盘符的概念，它只有一个根目录，也就是&#x2F;，所有的文件和设备都是挂载在它下面的目录——没错，例如光驱这样的设备也是以目录的形式访问的。  以下是常用目录速查- &#x2F;: 根目录，一般只存放目录，一个系统有且仅有一个根目录。 - &#x2F;bin、&#x2F;sbin： 可执行二进制">
+<meta property="article:published_time" content="2020-05-05T08:45:24.000Z">
+<meta property="article:modified_time" content="2020-05-05T09:26:11.245Z">
+<meta property="article:author" content="Lyn">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="分享吧" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">分享吧</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">同志！分享使我们快乐！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://greenmaker.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Note" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/05/Note/" class="article-date">
+  <time datetime="2020-05-05T08:45:24.000Z" itemprop="datePublished">2020-05-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Note
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="MY-NOTE"><a href="#MY-NOTE" class="headerlink" title="MY NOTE"></a>MY NOTE</h2><p>###（一）Linux中的分区与目录<br>我们了解的Windows系统有分区的概念，例如系统安装在C盘，资料存在D盘。但Linux中没有盘符的概念，它只有一个根目录，也就是/，所有的文件和设备都是挂载在它下面的目录——没错，例如光驱这样的设备也是以目录的形式访问的。</p>
+<ul>
+<li>以下是常用目录速查<pre><code>- /: 根目录，一般只存放目录，一个系统有且仅有一个根目录。
+- /bin、/sbin： 可执行二进制文件的目录，区别是/bin是标准用户可以使用的命   令，而/sbin是超级管理员使用的命令，s is for super你就明白了。
+- /boot: 放置启动时需要用到的文件，如内核文件/boot/vmlinuz，系统引导管理器/boot/grub，如果你现在还不太懂这些，没关系，一般你也不需要去改。
+- /dev： Linux系统下的设备文件，访问该目录下的文件相当于访问设备，例如挂载光驱：mout /dev/cdrom /mnt。从Windows来的同学很难理解这一点，光驱明明是个设备，怎么会是一个目录呢，唉，你就将它理解为C语言的指针，再不行就理解为是一个快捷方式吧。
+- /etc： 系统配置文件的存放目录，比如说，我们之前在可视的环境下修改了更新的服务器源地址，实际上那个操作只是修改了/etc/apt/sources.list 这个配置文件，你以后熟悉了，也可以直接改这个文件。 
+- /home，也就是家目录，所有用户的文档都是存在这个目录下的，不同用户以自己的用户名区别，比如zjlester的家目录就是/home/zjlester, ilester的家目录就是/home/ilester，这倒很好理解，就是一个楼里住着很多住户，家目录里还有不同的文件，例如“下载”、“桌面”等等，这就好比我们的家面积还是很大的，有很多房间。</code></pre></li>
+</ul>
+<p>###（二）Linux终端使用的几个小技巧</p>
+<ul>
+<li>具体如下：<pre><code>放大字体：ctrl+shift+=
+缩小字体：ctrl + -
+自动补全：Tab
+历史命令调用：上下光标
+中止当前程序： Ctrl +C （比如说，Linux也有一个ping，但与Windows下cmd中默认发送四个数据包不同的是，Linux中的ping会傻傻的一直发数据包，所以以前也有人觉得它不是ping 而是有bing， 那这个时候要中止它就是万能的CTRL+Ｃ了）</code></pre></li>
+</ul>
+<p>###（三）Linux的一些实用命令</p>
+<ul>
+<li>1）通配符<pre><code>*:任意字符，包括0
+?:任意一个字符，至少1个
+[]:表示范围， [abc]表示a,b,c，[a-f].[0-9]</code></pre></li>
+<li>2）查询帮助<pre><code>Win: 帮助菜单、F1
+Linux:
+     - 参数： --help，一次性显示所有帮助信息
+     - 命令： man , manual
+     -格式： man 命令（空格下一屏，b上一屏，q退出）</code></pre></li>
+<li>3）复制文件<pre><code>cp:
+-格式：cp  源文件路径 目标路径
+-r参数，递归复制子目录和文件，只跟目录</code></pre></li>
+<li>4）移动文件<pre><code>-格式：mv 源文件名 目标路径
+-可以用mv重命名文件
+-移动子目录和文件，不需要加-r
+实践：桌面上，配合tree练习</code></pre></li>
+<li>5）查看文件内容：cat<pre><code>-catalog缩写
+-格式：cat 文件名
+-参数： -b ,对非空行编号
+-参数：-n ，对所有行编号</code></pre></li>
+<li>6）查看文件内容：more<pre><code>-分屏显示
+-操作方式：空格下一屏，b上一屏，q退出</code></pre></li>
+<li>7）搜索：grep<pre><code>- 格式： grep 字符串 文件
+-字符串中有空格，用引号，
+-n: 对搜索出来的结果进行编号
+-v: 显示不匹配的行
+-i: 不区分大小写
+^:行的开头
+$：行的结尾</code></pre></li>
+<li>8）显示命令：echo<pre><code>通常是搭配管道使用：重定向
+&gt;:输出并覆盖原始内容
+&gt;&gt;：输出并追加至原始内容
+|:表示一个命令的输出作为另一个命令的输入
+   示例： ls -alh ~ | more
+   示例： ls -alh ~ | grep P
+   远程管理相关命令</code></pre></li>
+</ul>
+<p>###（四）Ctrl+Alt+T:启动终端</p>
+<ul>
+<li><p>1）shutdown：</p>
+<pre><code>1、默认一分钟关机
+2、取消: shutdown -c
+3、shutdown -r 重启
+4、定时任务： +num; hh:mm, now
+！远程管理时尽量不要关机或重启</code></pre></li>
+<li><p>2）ifconfig</p>
+<pre><code>1、ifconfig
+2、ifconfig | grep inet
+3、ping 
+默认一直发送数据包
+按CTRL+C中止</code></pre></li>
+<li><p>4）ssh</p>
+<pre><code>* Linux中非常常用的一个工具，可以利用SSH客户端登录SSH服务器
+* Windows下的Xshell--&gt; Linux上的SSH服务器
+* SSH端口：默认22
+* Windows下的常用的ssh客户端：putty、xshell，secureCRT。
+* Windows10自带了ssh命令行客户端
+* 所有类Unix系统均自带ssh命令行
+host=192.168.56.1   p=22   user= lester   pwd=..
+格式：ssh -p port user@host
+  1、在Linux上安装ssh服务器
+     openssh-server包
+     sudo /etc/init.d/ssh start
+     sudo /etc/init.d/ssh stop
+  2、要深入理解计算机网络，特别是NAT
+     主要两种情况：
+         a，桥接网络（家里路由器开通了DHCP推荐）virtual 、host处于同一个网段；用ipconfig 查出当前的地址，hostname = inet地址
+         b，NAT或NAT网络</code></pre></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://greenmaker.github.io/2020/05/05/Note/" data-id="ck9tp9k0t0000gw4kcn7qb1qw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/05/Note/">Note</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Lyn<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
